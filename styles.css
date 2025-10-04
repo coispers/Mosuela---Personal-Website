@@ -1,0 +1,142 @@
+
+body {
+  font-family: "Text Me One", Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #a7c7e7, #d3ecf8);
+  color: #2c3e50;
+}
+
+header {
+  background: linear-gradient(to right, #78c1f3, #5a95d4);
+  color: white;
+  padding: 5vh; 
+  text-align: center;
+  font-size: 4vh; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  letter-spacing: 5vh;
+}
+#dark-mode-btn {
+  background: #3498db; 
+  color: white;
+  border: none;
+  padding: 1vh 2vh;
+  font-size: 2vh;
+  border-radius: 1vh;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+#dark-mode-btn:hover {
+  background: #2978b5; 
+  transform: scale(1.05); 
+}
+
+#dark-mode-btn:active {
+  transform: scale(0.95); 
+}
+
+
+.whole-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 3vh; 
+}
+
+.flex-container {
+  background: white;
+  margin: 4vh; 
+  padding: 4vh; 
+  border-radius: 2vh; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 600px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 0.2vh solid #cce4f6; 
+}
+
+.flex-container:hover {
+  transform: translateY(-1vh); 
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.div-title {
+  font-size: 3.5vh; 
+  color: #5a95d4;
+  margin-bottom: 2vh; 
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+}
+
+.div-content p {
+  margin: 1.5vh 0; 
+  font-size: 2.5vh; 
+  color: #34495e;
+}
+
+a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #2c81ba;
+}
+
+.dark-mode #dark-mode-btn{
+  background-color: #181824;
+}
+
+.dark-mode {
+  background: linear-gradient(to bottom, #1e1e2f, #3a3a4f);
+  color: #e0e0e0; 
+}
+.dark-mode p{
+  color: #d7d7d7;
+}
+.dark-mode a {
+  color: #9fbcff; 
+}
+
+.dark-mode a:hover {
+  color: #c1d6ff; 
+}
+
+.dark-mode header {
+  background: linear-gradient(to right, #2a2a3c, #454555);
+  color: #f1f1f1;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.8);
+}
+
+.dark-mode .flex-container {
+  background: #2a2a3c; 
+  border: 0.2vh solid #3f3f57;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+}
+
+
+@media (max-width: 768px) {
+  .whole-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .flex-container {
+    width: 100%;
+    margin: 2vh 0; 
+  }
+
+  .div-title {
+    font-size: 3vh; 
+  }
+
+  .div-content p {
+    font-size: 2vh; 
+  }
+}
+
