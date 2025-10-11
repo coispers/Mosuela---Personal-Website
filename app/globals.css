@@ -1,0 +1,152 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated color scheme to soft blue palette for CS student portfolio */
+  --background: #d3ecf8;
+  --foreground: #2c3e50;
+  --card: #ffffff;
+  --card-foreground: #2c3e50;
+  --popover: #ffffff;
+  --popover-foreground: #2c3e50;
+  --primary: #78c1f3;
+  --primary-foreground: #ffffff;
+  --secondary: #a7c7e7;
+  --secondary-foreground: #2c3e50;
+  --muted: #cce4f6;
+  --muted-foreground: #5a95d4;
+  --accent: #5a95d4;
+  --accent-foreground: #ffffff;
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: #cce4f6;
+  --input: #cce4f6;
+  --ring: #78c1f3;
+  --link: #3498db;
+  --link-hover: #2c81ba;
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.75rem;
+  --sidebar: #d3ecf8;
+  --sidebar-foreground: #2c3e50;
+  --sidebar-primary: #78c1f3;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #a7c7e7;
+  --sidebar-accent-foreground: #2c3e50;
+  --sidebar-border: #cce4f6;
+  --sidebar-ring: #78c1f3;
+}
+
+.dark {
+  --background: #1a2332;
+  --foreground: #d3ecf8;
+  --card: #2c3e50;
+  --card-foreground: #d3ecf8;
+  --popover: #2c3e50;
+  --popover-foreground: #d3ecf8;
+  --primary: #78c1f3;
+  --primary-foreground: #1a2332;
+  --secondary: #5a95d4;
+  --secondary-foreground: #d3ecf8;
+  --muted: #3d5a80;
+  --muted-foreground: #a7c7e7;
+  --accent: #5a95d4;
+  --accent-foreground: #ffffff;
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: #3d5a80;
+  --input: #3d5a80;
+  --ring: #78c1f3;
+  --link: #78c1f3;
+  --link-hover: #a7c7e7;
+  --sidebar: #1a2332;
+  --sidebar-foreground: #d3ecf8;
+  --sidebar-primary: #78c1f3;
+  --sidebar-primary-foreground: #1a2332;
+  --sidebar-accent: #5a95d4;
+  --sidebar-accent-foreground: #d3ecf8;
+  --sidebar-border: #3d5a80;
+  --sidebar-ring: #78c1f3;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Added custom gradient background */
+.gradient-bg {
+  background: linear-gradient(135deg, #a7c7e7 0%, #d3ecf8 100%);
+}
+
+/* Smooth scrolling for in-page anchors */
+html {
+  scroll-behavior: smooth;
+  /* Helps when using element.scrollIntoView by padding the top */
+  scroll-padding-top: var(--nav-offset, 5rem);
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Offset targets for the fixed navbar so headings aren't hidden */
+:root {
+  --nav-offset: 5rem;
+}
+section[id] {
+  scroll-margin-top: var(--nav-offset);
+}
