@@ -69,7 +69,7 @@ export function Contact() {
                   </div>
                   <div>
                     <p className="font-medium text-card-foreground">Location</p>
-                    <p className="text-muted-foreground">Batangas, Philippines</p>
+                    <p className="text-muted-foreground">Calamba, Laguna</p>
                   </div>
                 </div>
               </Card>
@@ -163,7 +163,7 @@ export function Contact() {
         </div>
 
         <footer className="mt-16 pt-8 border-t border-border text-center">
-          <p className="text-muted-foreground">© 2025 Francois Louise C. Mosuela | Batangas State University</p>
+          <p className="text-muted-foreground">© 2025 Francois Louise C. Mosuela</p>
         </footer>
       </div>
     </section>

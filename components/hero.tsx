@@ -10,7 +10,7 @@ export function Hero() {
           <div className="space-y-8">
             <div className="flex flex-wrap items-center gap-3">
               <span className="chip">Full-Stack Developer</span>
-              <span className="chip">Batangas, Philippines</span>
+              <span className="chip">Calamba, Laguna</span>
             </div>
             <div className="space-y-5">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-foreground tracking-tight text-balance">
@@ -67,20 +67,6 @@ export function Hero() {
               <span className="text-sm text-muted-foreground">Open to entry-level full-stack or backend roles</span>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-3">
-              <div className="stat">
-                <span className="text-sm text-muted-foreground">Focus</span>
-                <span className="text-lg font-semibold text-foreground">API design + tooling</span>
-              </div>
-              <div className="stat">
-                <span className="text-sm text-muted-foreground">Stack</span>
-                <span className="text-lg font-semibold text-foreground">Next.js, Flutter, Firebase</span>
-              </div>
-              <div className="stat">
-                <span className="text-sm text-muted-foreground">Projects</span>
-                <span className="text-lg font-semibold text-foreground">4 shipped experiences</span>
-              </div>
-            </div>
           </div>
 
           <div className="relative">

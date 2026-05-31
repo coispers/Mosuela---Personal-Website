@@ -98,12 +98,6 @@ export function Projects() {
                     Code
                   </a>
                 </Button>
-                <Button size="sm" asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-                  <a href={featured.demo} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Demo
-                  </a>
-                </Button>
               </div>
             </div>
           </div>
@@ -142,12 +136,6 @@ export function Projects() {
                     <a href={project.github} target="_blank" rel="noopener noreferrer">
                       <Github className="w-4 h-4 mr-2" />
                       Code
-                    </a>
-                  </Button>
-                  <Button size="sm" asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-                    <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Demo
                     </a>
                   </Button>
                 </div>
