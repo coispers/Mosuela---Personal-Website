@@ -4,59 +4,54 @@ export function Skills() {
   const skillCategories = [
     {
       title: "Programming Languages",
-      skills: [
-        { name: "C++", level: 90 },
-        { name: "C#", level: 85 },
-        { name: "Python", level: 75 },
-        { name: "Java", level: 60 },
-        { name: "Dart", level: 70 },
-      ],
+      skills: ["Python", "C++", "C#", "Java"],
     },
     {
-      title: "Web Technologies",
-      skills: [
-        { name: "HTML", level: 75 },
-        { name: "Javascript", level: 75 },
-        { name: "CSS", level: 60 },
-        { name: "Ionic", level: 70 },
-        { name: "Flutter", level: 50 },
-      ],
+      title: "Frontend + Mobile",
+      skills: ["React", "Ionic"],
     },
     {
-      title: "Databases",
-      skills: [
-        { name: "MySQL", level: 70 },
-        { name: "Firebase", level: 65 },
-      ],
+      title: "Cloud + Backend",
+      skills: ["Firebase", "Supabase", "SendGrid"],
+    },
+    {
+      title: "DevOps + Deployment",
+      skills: ["Vercel", "GitHub"],
+    },
+    {
+      title: "Productivity",
+      skills: ["MS Office", "Google Workspace"],
+    },
+    {
+      title: "AI-Assisted Tools",
+      skills: ["Cursor", "Copilot", "Codex"],
     },
   ]
 
   return (
-    <section id="skills" className="py-20 px-4 gradient-bg">
+    <section id="skills" className="section-wrap gradient-bg">
       <div className="container mx-auto max-w-6xl">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-foreground">Skills & Technologies</h2>
+        <div className="flex flex-col gap-3 mb-12">
+          <p className="section-kicker">Skills</p>
+          <h2 className="section-title">Tools I use to build and ship.</h2>
+          <p className="text-muted-foreground max-w-2xl">
+            A balanced toolkit across backend systems, product UI, and deployment. I prefer picking the right tool for
+            the problem, not forcing a single stack everywhere.
+          </p>
+        </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-6">
           {skillCategories.map((category) => (
             <Card
               key={category.title}
-              className="p-6 border-2 border-border hover:border-primary transition-all hover:shadow-lg"
+              className="glass-card card-hover p-6"
             >
-              <h3 className="text-2xl font-semibold mb-6 text-primary text-card-foreground">{category.title}</h3>
-              <div className="space-y-4">
+              <h3 className="text-xl font-semibold mb-4 text-foreground">{category.title}</h3>
+              <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill) => (
-                  <div key={skill.name}>
-                    <div className="flex justify-between mb-2">
-                      <span className="font-medium text-card-foreground">{skill.name}</span>
-                      <span className="text-muted-foreground">{skill.level}%</span>
-                    </div>
-                    <div className="h-2 bg-muted rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-primary rounded-full transition-all duration-500"
-                        style={{ width: `${skill.level}%` }}
-                      />
-                    </div>
-                  </div>
+                  <span key={skill} className="chip">
+                    {skill}
+                  </span>
                 ))}
               </div>
             </Card>

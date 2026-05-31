@@ -1,13 +1,23 @@
 import type { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
-import { GeistMono } from 'geist/font/mono'
 import { Analytics } from '@vercel/analytics/next'
+import { Manrope, Fraunces } from 'next/font/google'
 import './globals.css'
 
+const manrope = Manrope({
+  subsets: ['latin'],
+  variable: '--font-sans',
+})
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-display',
+})
+
 export const metadata: Metadata = {
-  title: 'Francois Mosuela • Portfolio',
-  description: 'An aspiring Computer Science Student at Batangas State University.',
-  generator: '',
+  title: 'Francois Mosuela • Full-Stack Developer',
+  description:
+    'Full-stack developer focused on clean interfaces, reliable systems, and thoughtful product experiences.',
+  generator: 'Next.js',
 }
 
 export default function RootLayout({
@@ -17,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
+      <body className={`${manrope.variable} ${fraunces.variable} font-sans antialiased`}>
         {children}
         <Analytics />
       </body>
