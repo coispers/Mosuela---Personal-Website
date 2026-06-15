@@ -6,6 +6,19 @@ type ContactRequestBody = {
   message?: string
 }
 
+function escapeHtml(str: string) {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;")
+}
+
+function isValidEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+}
+
 export async function POST(request: Request) {
   try {
     const body = (await request.json()) as ContactRequestBody
@@ -15,6 +28,15 @@ export async function POST(request: Request) {
 
     if (!name || !email || !message) {
       return Response.json({ error: "Please fill in all fields." }, { status: 400 })
+    }
+
+    if (!isValidEmail(email)) {
+      return Response.json({ error: "Please provide a valid email address." }, { status: 400 })
+    }
+
+    // limit lengths to reasonable sizes
+    if (name.length > 200 || email.length > 200 || message.length > 5000) {
+      return Response.json({ error: "Input is too long." }, { status: 400 })
     }
 
     const smtpHost = process.env.SMTP_HOST
@@ -44,18 +66,23 @@ export async function POST(request: Request) {
       },
     })
 
+    const safeName = escapeHtml(name)
+    const safeEmail = escapeHtml(email)
+    const safeMessage = escapeHtml(message)
+
     await transporter.sendMail({
       from: smtpFrom,
       to: contactTo,
-      replyTo: email,
-      subject: `Portfolio inquiry from ${name}`,
+      // replyTo uses validated email
+      replyTo: isValidEmail(email) ? email : undefined,
+      subject: `Portfolio inquiry from ${safeName}`,
       text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
       html: `
         <h2>Portfolio inquiry</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Name:</strong> ${safeName}</p>
+        <p><strong>Email:</strong> ${safeEmail}</p>
         <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, "<br />")}</p>
+        <p>${safeMessage.replace(/\n/g, "<br />")}</p>
       `,
     })
 
