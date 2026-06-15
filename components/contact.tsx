@@ -15,12 +15,41 @@ export function Contact() {
     email: "",
     message: "",
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [statusMessage, setStatusMessage] = useState("")
+  const [statusType, setStatusType] = useState<"success" | "error" | "">("")
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const subject = encodeURIComponent("Portfolio inquiry")
-    const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)
-    window.location.href = `mailto:francoislouisemosuela@gmail.com?subject=${subject}&body=${body}`
+
+    setIsSubmitting(true)
+    setStatusMessage("")
+    setStatusType("")
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const result = (await response.json()) as { message?: string; error?: string }
+
+      if (!response.ok) {
+        throw new Error(result.error || "Something went wrong while sending your message.")
+      }
+
+      setFormData({ name: "", email: "", message: "" })
+      setStatusType("success")
+      setStatusMessage(result.message || "Message sent successfully. I will get back to you soon.")
+    } catch (error) {
+      setStatusType("error")
+      setStatusMessage(error instanceof Error ? error.message : "Unable to send the message right now.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -152,12 +181,20 @@ export function Contact() {
                 />
               </div>
 
-              <Button type="submit" className="w-full bg-primary hover:bg-accent text-primary-foreground">
-                Send Message
+              <Button
+                type="submit"
+                className="w-full bg-primary hover:bg-accent text-primary-foreground"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
-              <p className="text-xs text-muted-foreground">
-                This form opens your email client to send a message directly.
-              </p>
+              {statusMessage ? (
+                <p className={`text-xs ${statusType === "success" ? "text-emerald-400" : "text-destructive"}`}>
+                  {statusMessage}
+                </p>
+              ) : (
+                <p className="text-xs text-muted-foreground">Messages are sent directly to my inbox.</p>
+              )}
             </form>
           </Card>
         </div>
