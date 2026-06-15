@@ -53,8 +53,8 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="section-wrap gradient-bg">
-      <div className="container mx-auto max-w-6xl">
+    <section id="contact" className="section-wrap gradient-bg min-h-screen flex flex-col">
+      <div className="container mx-auto max-w-6xl flex flex-col flex-1">
         <div className="flex flex-col gap-3 mb-12">
           <p className="section-kicker">Contact</p>
           <h2 className="section-title">Let us build something that lasts.</h2>
@@ -63,7 +63,7 @@ export function Contact() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-[1fr_1.1fr] gap-8">
+        <div className="grid md:grid-cols-[1fr_1.1fr] gap-8 flex-1">
           <div className="space-y-6">
             <div>
               <h3 className="text-2xl font-semibold mb-4 text-foreground">Direct lines</h3>
@@ -137,8 +137,8 @@ export function Contact() {
             </div>
           </div>
 
-          <Card className="glass-card card-hover p-6">
-            <form onSubmit={handleSubmit} className="space-y-4">
+          <Card className="glass-card card-hover p-6 flex flex-col">
+            <form onSubmit={handleSubmit} className="space-y-4 flex flex-col flex-1">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2 text-card-foreground">
                   Name
@@ -167,16 +167,16 @@ export function Contact() {
                 />
               </div>
 
-              <div>
+              <div className="flex-1 flex flex-col">
                 <label htmlFor="message" className="block text-sm font-medium mb-2 text-card-foreground">
                   Message
                 </label>
                 <Textarea
                   id="message"
                   placeholder="Your message..."
-                  rows={5}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="flex-1"
                   required
                 />
               </div>
