@@ -39,7 +39,7 @@ export function About() {
               <div className="flex items-center gap-4">
                 <div className="relative h-16 w-16 overflow-hidden rounded-2xl border border-border/60">
                   <Image
-                    src="/profilepicture.jpg"
+                    src="/profilepic.JPG"
                     alt="Francois Mosuela profile"
                     fill
                     className="object-cover"
