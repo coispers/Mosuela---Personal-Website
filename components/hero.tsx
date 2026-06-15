@@ -74,7 +74,7 @@ export function Hero() {
             <div className="relative glass-card rounded-3xl p-6 card-hover">
               <div className="relative overflow-hidden rounded-2xl aspect-[4/5]">
                 <Image
-                  src="/profilepic2.JPG"
+                  src="/profilepic2.png"
                   alt="Francois Mosuela headshot"
                   fill
                   className="object-cover"
