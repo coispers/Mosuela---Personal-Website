@@ -11,6 +11,13 @@ export function Hero() {
             <div className="flex flex-wrap items-center gap-3">
               <span className="chip">Full-Stack Developer</span>
               <span className="chip">Calamba, Laguna</span>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/[0.04] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-accent shadow-[0_0_14px_rgba(46,230,166,0.18)]">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+                </span>
+                Open for Work
+              </span>
             </div>
             <div className="space-y-5">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-foreground tracking-tight text-balance">
