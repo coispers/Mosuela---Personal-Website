@@ -1,31 +1,62 @@
+"use client"
+
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowDown, Github, Linkedin, Mail, ArrowUpRight } from "lucide-react"
+import { motion } from "framer-motion"
+import { useTypewriter } from "@/hooks/use-typewriter"
+
+const roles = ["Full-Stack Developer", "Backend Engineer", "CS Student"]
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.12, delayChildren: 0.3 },
+  },
+}
+
+const staggerItem = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+}
 
 export function Hero() {
+  const { text, isDeleting } = useTypewriter({ words: roles, typeSpeed: 70, deleteSpeed: 45, pauseDuration: 2200 })
+
   return (
-    <section className="min-h-screen page-bg flex items-center px-4 pt-24">
+    <section className="min-h-screen page-bg flex items-center px-4 pt-24 relative overflow-hidden">
       <div className="container mx-auto max-w-6xl">
-        <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] items-center">
-          <div className="space-y-8">
+        <motion.div
+          className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] items-center"
+          variants={staggerContainer}
+          initial="hidden"
+          animate="show"
+        >
+          <motion.div variants={staggerItem} className="space-y-8">
             <div className="flex flex-wrap items-center gap-3">
-              <span className="chip">Full-Stack Developer</span>
-              <span className="chip">Calamba, Laguna</span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/[0.04] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-accent shadow-[0_0_14px_rgba(46,230,166,0.18)]">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
-                </span>
-                Open for Work
-              </span>
+              <span className="chip">Calamba City, Laguna</span>
             </div>
+
             <div className="space-y-5">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-foreground tracking-tight text-balance">
-                Building resilient products with clean interfaces and reliable systems.
+                Francois Louise C. Mosuela
               </h1>
+              <div className="flex items-center gap-2 text-lg md:text-xl text-muted-foreground">
+                <span>I am a</span>
+                <span className="relative inline-block min-w-[160px]">
+                  <span className="text-transparent bg-gradient-to-r from-primary via-accent to-accent bg-clip-text">
+                    {text}
+                  </span>
+                  <span
+                    className={`absolute -right-1 top-0.5 h-[1.1em] w-[2px] bg-accent ${
+                      isDeleting ? "" : "animate-pulse"
+                    }`}
+                  />
+                </span>
+              </div>
               <p className="text-lg md:text-xl text-muted-foreground max-w-2xl text-balance">
-                I am Francois Louise C. Mosuela, a full-stack developer and CS student focused on backend systems,
-                thoughtful UI, and real-world problem solving.
+                CS student focused on backend systems, thoughtful UI, and real-world problem solving.
               </p>
             </div>
 
@@ -73,36 +104,61 @@ export function Hero() {
               </div>
               <span className="text-sm text-muted-foreground">Open to entry-level full-stack or backend roles</span>
             </div>
+          </motion.div>
 
-          </div>
-
-          <div className="relative">
-            <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-primary/20 via-transparent to-accent/10 blur-2xl" />
-            <div className="relative glass-card rounded-3xl p-6 card-hover">
-              <div className="relative overflow-hidden rounded-2xl aspect-[4/5]">
-                <Image
-                  src="/profilepic2.png"
-                  alt="Francois Mosuela headshot"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-              <div className="mt-6 space-y-3">
-                <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground">Currently</p>
-                <p className="text-lg font-semibold text-foreground">Computer Science student</p>
-                <p className="text-sm text-muted-foreground">
-                  Delivering practical projects that blend backend reliability with polished UI.
-                </p>
-              </div>
+          <motion.div variants={staggerItem} className="relative">
+            <div className="relative flex items-center justify-center">
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                className="absolute w-[320px] h-[320px] rounded-full"
+                style={{
+                  background:
+                    "conic-gradient(from 0deg, transparent, rgba(109,40,217,0.3), rgba(6,182,212,0.3), transparent)",
+                }}
+              />
+              <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-primary/20 via-transparent to-accent/10 blur-2xl" />
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="relative glass-card rounded-3xl p-6 card-hover"
+              >
+                <div className="relative overflow-hidden rounded-2xl aspect-[4/5]">
+                  <Image
+                    src="/profilepic2.png"
+                    alt="Francois Mosuela headshot"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+                <div className="mt-6 space-y-3">
+                  <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground">Currently</p>
+                  <p className="text-lg font-semibold text-foreground">Computer Science student</p>
+                  <p className="text-sm text-muted-foreground">
+                    Batangas State University
+                  </p>
+                </div>
+              </motion.div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <a href="#about" className="inline-flex items-center gap-2 mt-12 text-sm text-muted-foreground hover:text-primary">
-          <ArrowDown className="w-4 h-4" />
-          Scroll to learn more
-        </a>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.8, duration: 0.6 }}
+        >
+          <a
+            href="#about"
+            className="inline-flex items-center gap-2 mt-12 text-sm text-muted-foreground hover:text-primary transition-colors"
+          >
+            <motion.div animate={{ y: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}>
+              <ArrowDown className="w-4 h-4" />
+            </motion.div>
+            Scroll to learn more
+          </a>
+        </motion.div>
       </div>
     </section>
   )

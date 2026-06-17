@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Richard Ll. Molo — Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-outline" id="cursorOutline"></div>
+
+    <!-- Particles -->
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Intro Overlay -->
+    <div class="intro-overlay" id="introOverlay">
+        <div class="intro-line"></div>
+        <div class="intro-text">
+            <h1 class="intro-welcome">Welcome to my portfolio</h1>
+        </div>
+        <div class="intro-scroll-hint">
+            <span>Scroll to explore</span>
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-logo">
+            <a href="#hero">RM<span class="accent">.</span></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#hero" class="nav-link" data-text="Home">Home</a></li>
+            <li><a href="#about" class="nav-link" data-text="About">About</a></li>
+            <li><a href="#skills" class="nav-link" data-text="Skills">Skills</a></li>
+            <li><a href="#projects" class="nav-link" data-text="Projects">Projects</a></li>
+            <li><a href="#experience" class="nav-link" data-text="Experience">Experience</a></li>
+            <li><a href="#contact" class="nav-link" data-text="Contact">Contact</a></li>
+        </ul>
+        <div class="nav-toggle" id="navToggle">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container hero-grid">
+            <!-- Left: Description -->
+            <div class="hero-content">
+                <h1 class="hero-name reveal-up">Richard Ll. Molo</h1>
+                <div class="hero-role-wrapper reveal-up">
+                    <span class="hero-role highlight-text" id="rotatingText">Full Stack Developer</span>
+                    <span class="highlight-bg"></span>
+                </div>
+                <p class="hero-desc reveal-up">Full Stack Developer with hands on experience in developing secure web and mobile applications, real world information systems, AI assisted solutions, and game development projects. Skilled in implementing authentication systems, role based access control, SMS/OTP verification, database driven applications, and workflow automation. Experienced in designing, developing, and deploying end to end software solutions that prioritize security, usability, and efficiency. Brings strong communication and presentation skills from experience as a Radio Disc Jockey and Online ESL Tutor.</p>
+                <div class="hero-cta reveal-up">
+                    <a href="#" class="btn btn-primary">
+                        <i class="fas fa-download"></i>
+                        <span>Download CV</span>
+                    </a>
+                    <a href="#projects" class="btn btn-outline">
+                        <span>My Projects</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Right: Image -->
+            <div class="hero-image reveal-right">
+                <div class="hero-image-wrapper">
+                    <img src="images/profile.png" alt="Richard Ll. Molo" class="hero-img">
+                    <div class="hero-img-border"></div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <div class="mouse">
+                <div class="mouse-wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title reveal-up">About <span class="accent">me</span></h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-image reveal-left">
+                    <div class="image-frame">
+                        <div class="about-img-container" id="aboutImgContainer">
+                            <img src="images/profile-about1.jpg" alt="Richard Ll. Molo" class="about-img about-img-active">
+                            <img src="images/profile-about2.png" alt="Richard Ll. Molo" class="about-img">
+                            <img src="images/profile-about3.jpg" alt="Richard Ll. Molo" class="about-img">
+                        </div>
+                        <div class="image-border"></div>
+                    </div>
+                </div>
+                <div class="about-content reveal-right">
+                    <p class="about-text">I am a Full Stack Developer with hands on experience building real world systems, ranging from web and mobile applications with secure authentication, SMS/OTP integration and database driven functionality to AI-powered automation solutions and interactive game development projects.</p>
+                    <p class="about-text">My background spans software development, broadcasting, and education along with experience as an event host, Radio DJ, and an ESL Tutor, giving me a strong combination of technical problem solving and effective communication skills. I am passionate about building practical solutions, exploring emerging technologies, and continuously improving as a developer.</p>
+                    <div class="about-stats">
+                        <div class="stat reveal-up">
+                            <span class="stat-number" data-target="8">0</span><span class="accent">+</span>
+                            <span class="stat-label">Projects Built</span>
+                        </div>
+                        <div class="stat reveal-up">
+                            <span class="stat-number" data-target="6">0</span><span class="accent">+</span>
+                            <span class="stat-label">Years Work Experience</span>
+                        </div>
+                        <div class="stat reveal-up">
+                            <span class="stat-number" data-target="3">0</span>
+                            <span class="stat-label">Languages Spoken</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section projects" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title reveal-up">My <span class="accent">Projects</span></h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card reveal-up" data-tilt data-video="IOmJ0v_5A0Q" data-website="#" data-title="RadioSync System" data-description="Capstone project — full system developed independently with backend logic, system architecture, and integration features.">
+                    <div class="project-image">
+                        <iframe class="project-thumbnail-video" src="https://www.youtube.com/embed/IOmJ0v_5A0Q?mute=1&autoplay=1&loop=1&playlist=IOmJ0v_5A0Q&playsinline=1&controls=0&modestbranding=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <div class="project-overlay">
+                            <button class="project-link video-play-btn"><i class="fas fa-play"></i></button>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>RadioSync System</h3>
+                        <p>Capstone project — full system developed independently with backend logic, system architecture, and integration features.</p>
+                        <div class="project-tech">
+                            <span>Full Stack</span><span>System Architecture</span><span>Solo Project</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card reveal-up" data-tilt data-video="dHJ81mIkhfw" data-website="#" data-title="Barangay 10 Cabugao System" data-description="Barangay management system with fingerprint authentication for secure resident identification and streamlined administrative processes.">
+                    <div class="project-image">
+                        <iframe class="project-thumbnail-video" src="https://www.youtube.com/embed/dHJ81mIkhfw?mute=1&autoplay=1&loop=1&playlist=dHJ81mIkhfw&playsinline=1&controls=0&modestbranding=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <div class="project-overlay">
+                            <button class="project-link video-play-btn"><i class="fas fa-play"></i></button>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Barangay 10 Cabugao System</h3>
+                        <p>Barangay management system with fingerprint authentication for secure resident identification and streamlined administrative processes.</p>
+                        <div class="project-tech">
+                            <span>Fingerprint Auth</span><span>Barangay System</span><span>PHP</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card reveal-up" data-tilt data-video="0PMVHBFgTSI" data-website="#" data-title="Attendance Monitoring System" data-description="OTP-based authentication with SMS notification system and secure login/verification workflow.">
+                    <div class="project-image">
+                        <iframe class="project-thumbnail-video" src="https://www.youtube.com/embed/0PMVHBFgTSI?mute=1&autoplay=1&loop=1&playlist=0PMVHBFgTSI&playsinline=1&controls=0&modestbranding=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <div class="project-overlay">
+                            <button class="project-link video-play-btn"><i class="fas fa-play"></i></button>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Attendance Monitoring System</h3>
+                        <p>OTP-based authentication with SMS notification system and secure login/verification workflow.</p>
+                        <div class="project-tech">
+                            <span>OTP</span><span>SMS API</span><span>Authentication</span><span>PHP</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card reveal-up" data-tilt data-video="mOi7TVD_fl0" data-website="#" data-title="Waste Collection Management" data-description="System for tracking and managing waste operations with focus on efficiency, organization, and data handling.">
+                    <div class="project-image">
+                        <iframe class="project-thumbnail-video" src="https://www.youtube.com/embed/mOi7TVD_fl0?mute=1&autoplay=1&loop=1&playlist=mOi7TVD_fl0&playsinline=1&controls=0&modestbranding=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <div class="project-overlay">
+                            <button class="project-link video-play-btn"><i class="fas fa-play"></i></button>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Waste Collection Management</h3>
+                        <p>System for tracking and managing waste operations with focus on efficiency, organization, and data handling.</p>
+                        <div class="project-tech">
+                            <span>PHP</span><span>MySQL</span><span>SMS API</span><span>Bootstrap</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card reveal-up" data-tilt data-video="9m0ZwYiP6D4" data-website="#" data-title="AI Robot Companion" data-description="Voice controlled robot system with AI-based interaction and response system for automation and control.">
+                    <div class="project-image">
+                        <iframe class="project-thumbnail-video" src="https://www.youtube.com/embed/9m0ZwYiP6D4?mute=1&autoplay=1&loop=1&playlist=9m0ZwYiP6D4&playsinline=1&controls=0&modestbranding=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <div class="project-overlay">
+                            <button class="project-link video-play-btn"><i class="fas fa-play"></i></button>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>AI Robot Companion</h3>
+                        <p>Voice controlled robot system with AI-based interaction and response system for automation and control.</p>
+                        <div class="project-tech">
+                            <span>Voice Recognition</span><span>AI</span><span>Automation</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card reveal-up" data-tilt data-video="9BpR4hhkM5k" data-website="#" data-title="Face Recognition System" data-description="Identity recognition system using face detection for authentication and monitoring purposes.">
+                    <div class="project-image">
+                        <iframe class="project-thumbnail-video" src="https://www.youtube.com/embed/9BpR4hhkM5k?mute=1&autoplay=1&loop=1&playlist=9BpR4hhkM5k&playsinline=1&controls=0&modestbranding=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <div class="project-overlay">
+                            <button class="project-link video-play-btn"><i class="fas fa-play"></i></button>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Face Recognition System</h3>
+                        <p>Identity recognition system using face detection for authentication and monitoring purposes.</p>
+                        <div class="project-tech">
+                            <span>Face Detection</span><span>Authentication</span><span>Monitoring</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card reveal-up" data-tilt data-video="KAVSZvFYzqY" data-website="#" data-title="RSVP System" data-description="Event response tracking system managing user registration and confirmations.">
+                    <div class="project-image">
+                        <iframe class="project-thumbnail-video" src="https://www.youtube.com/embed/KAVSZvFYzqY?mute=1&autoplay=1&loop=1&playlist=KAVSZvFYzqY&playsinline=1&controls=0&modestbranding=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <div class="project-overlay">
+                            <button class="project-link video-play-btn"><i class="fas fa-play"></i></button>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>RSVP System</h3>
+                        <p>Event response tracking system managing user registration and confirmations.</p>
+                        <div class="project-tech">
+                            <span>CRUD</span><span>Registration</span><span>Tracking</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card reveal-up" data-tilt data-video="z1rRR9jZXtY" data-website="#" data-title="Game Development Projects" data-description="Interactive games built with Godot and GDevelop — focusing on gameplay mechanics, user interaction, and game design.">
+                    <div class="project-image">
+                        <iframe class="project-thumbnail-video" src="https://www.youtube.com/embed/z1rRR9jZXtY?mute=1&autoplay=1&loop=1&playlist=z1rRR9jZXtY&playsinline=1&controls=0&modestbranding=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <div class="project-overlay">
+                            <button class="project-link video-play-btn"><i class="fas fa-play"></i></button>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Game Development Projects</h3>
+                        <p>Interactive games built with Godot and GDevelop — focusing on gameplay mechanics, user interaction, and game design.</p>
+                        <div class="project-tech">
+                            <span>Godot</span><span>GDevelop</span><span>Game Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section skills" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title reveal-up">My <span class="accent">toolkit</span></h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card reveal-up" data-tilt>
+                    <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                    <h3>Full Stack Development</h3>
+                    <div class="skill-tags">
+                        <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>PHP</span><span>MySQL</span><span>CRUD Systems</span>
+                    </div>
+                </div>
+                <div class="skill-card reveal-up" data-tilt>
+                    <div class="skill-icon"><i class="fas fa-cogs"></i></div>
+                    <h3>System Design</h3>
+                    <div class="skill-tags">
+                        <span>System Analysis</span><span>Database Management</span><span>API Integration</span><span>Authentication</span>
+                    </div>
+                </div>
+                <div class="skill-card reveal-up" data-tilt>
+                    <div class="skill-icon"><i class="fas fa-robot"></i></div>
+                    <h3>AI & Recognition</h3>
+                    <div class="skill-tags">
+                        <span>Face Recognition</span><span>Voice Recognition</span><span>AI Commands</span><span>Automation</span>
+                    </div>
+                </div>
+                <div class="skill-card reveal-up" data-tilt>
+                    <div class="skill-icon"><i class="fas fa-sms"></i></div>
+                    <h3>Integration</h3>
+                    <div class="skill-tags">
+                        <span>SMS API</span><span>OTP Verification</span><span>Real-time Messaging</span><span>Third-party APIs</span>
+                    </div>
+                </div>
+                <div class="skill-card reveal-up" data-tilt>
+                    <div class="skill-icon"><i class="fas fa-gamepad"></i></div>
+                    <h3>Game Development</h3>
+                    <div class="skill-tags">
+                        <span>Godot</span><span>GDevelop</span><span>Game Mechanics</span><span>Interactive Design</span>
+                    </div>
+                </div>
+                <div class="skill-card reveal-up" data-tilt>
+                    <div class="skill-icon"><i class="fas fa-bug"></i></div>
+                    <h3>Problem Solving</h3>
+                    <div class="skill-tags">
+                        <span>Debugging</span><span>Troubleshooting</span><span>Logic Design</span><span>Optimization</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Education Section -->
+    <section class="section experience" id="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title reveal-up">My <span class="accent">journey</span></h2>
+            </div>
+            <div class="timeline-grid">
+                <!-- Work Experience -->
+                <div class="timeline-column reveal-left">
+                    <h3 class="timeline-heading"><i class="fas fa-briefcase"></i> Work Experience</h3>
+                    <div class="timeline-item reveal-up">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2018 – Present</span>
+                            <h4>Online ESL Tutor</h4>
+                            <p>Bibo Global Opportunity / Acadsoc Ltd.</p>
+                            <span class="timeline-tag">English Teaching</span><span class="timeline-tag">Communication</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item reveal-up">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2014 – 2018</span>
+                            <h4>Radio Disc Jockey (DJ)</h4>
+                            <p>Barangay LS 96.3 — Legazpi City</p>
+                            <span class="timeline-tag">Live Hosting</span><span class="timeline-tag">Public Speaking</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item reveal-up">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">Previous</span>
+                            <h4>BPO / Outbound Sales</h4>
+                            <p>Customer communication and sales processes</p>
+                            <span class="timeline-tag">Sales</span><span class="timeline-tag">Client Relations</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Education -->
+                <div class="timeline-column reveal-right">
+                    <h3 class="timeline-heading"><i class="fas fa-graduation-cap"></i> Education</h3>
+                    <div class="timeline-item reveal-up">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2023 – 2026</span>
+                            <h4>BS Information Technology</h4>
+                            <p>Computer Communication Development Institute (CCDI)</p>
+                            <span class="timeline-tag">Full Stack</span><span class="timeline-tag">System Dev</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item reveal-up">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2010 – 2013</span>
+                            <h4>AB Journalism</h4>
+                            <p>Bicol University — College of Arts and Letters</p>
+                            <span class="timeline-tag">Writing</span><span class="timeline-tag">Media</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item reveal-up">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2006 – 2010</span>
+                            <h4>Science High School</h4>
+                            <p>AMEC Science High School</p>
+                            <span class="timeline-tag">Science</span><span class="timeline-tag">Academics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ 
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title reveal-up">Let's <span class="accent">connect</span></h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info reveal-left">
+                    <p class="contact-text">Have a project in mind or just want to chat? I'd love to hear from you. Let's create something amazing together.</p>
+                    <div class="contact-links">
+                        <a href="mailto:richardmolo@email.com" class="contact-link-item reveal-up">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <span class="contact-label">Email</span>
+                                <span class="contact-value">richardmolo@gmail.com</span>
+                            </div>
+                        </a>
+                        <a href="#" class="contact-link-item reveal-up">
+                            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                            <div>
+                                <span class="contact-label">Phone</span>
+                                <span class="contact-value">09757850689</span>
+                            </div>
+                        </a>
+                        <a href="#" class="contact-link-item reveal-up">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <span class="contact-label">Location</span>
+                                <span class="contact-value">Legazpi City, Philippines</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <form class="contact-form reveal-right" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" required placeholder=" ">
+                        <label for="name">Your Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" required placeholder=" ">
+                        <label for="email">Your Email</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="5" required placeholder=" "></textarea>
+                        <label for="message">Your Message</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <a href="#hero" class="footer-logo">RM<span class="accent">.</span></a>
+                <p>Crafted with <span class="accent">&hearts;</span> and lots of coffee</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <button class="video-modal-close" id="videoModalClose">&times;</button>
+            <div class="video-modal-video">
+                <iframe id="modalVideo" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+            <div class="video-modal-info">
+                <h3 id="modalTitle">RadioSync System</h3>
+                <p id="modalDescription">Capstone project — full system developed independently with backend logic, system architecture, and integration features.</p>
+                <a href="#" class="btn btn-primary" id="projectWebsiteLink" target="_blank">
+                    <i class="fas fa-external-link-alt"></i>
+                    <span>Visit Website</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
