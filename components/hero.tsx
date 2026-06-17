@@ -111,7 +111,7 @@ export function Hero() {
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                className="absolute w-[320px] h-[320px] rounded-full"
+                className="absolute w-[400px] h-[400px] rounded-full"
                 style={{
                   background:
                     "conic-gradient(from 0deg, transparent, rgba(109,40,217,0.3), rgba(6,182,212,0.3), transparent)",
@@ -121,9 +121,9 @@ export function Hero() {
               <motion.div
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="relative glass-card rounded-3xl p-6 card-hover"
+                className="relative glass-card rounded-3xl p-8 card-hover"
               >
-                <div className="relative overflow-hidden rounded-2xl aspect-[4/5]">
+                <div className="relative overflow-hidden rounded-2xl aspect-[5/6]">
                   <Image
                     src="/profilepic2.png"
                     alt="Francois Mosuela headshot"
@@ -132,10 +132,10 @@ export function Hero() {
                     priority
                   />
                 </div>
-                <div className="mt-6 space-y-3">
+                <div className="mt-8 space-y-3">
                   <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground">Currently</p>
-                  <p className="text-lg font-semibold text-foreground">Computer Science student</p>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-xl font-semibold text-foreground">Computer Science student</p>
+                  <p className="text-base text-muted-foreground">
                     Batangas State University
                   </p>
                 </div>
