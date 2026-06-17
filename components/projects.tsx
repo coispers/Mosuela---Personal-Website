@@ -63,7 +63,7 @@ const staggerContainer = {
 
 const staggerItem = {
   hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
 }
 
 export function Projects() {
@@ -71,12 +71,19 @@ export function Projects() {
   const [featured, ...restProjects] = allProjects
 
   return (
-    <section id="projects" className="section-wrap">
+    <motion.section
+      id="projects"
+      className="section-wrap"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+    >
       <div className="container mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5 }}
           className="flex flex-col gap-3 mb-12"
         >
@@ -89,10 +96,10 @@ export function Projects() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, scale: 0.96, y: 20 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
         >
           <Card
             className="glass-card card-hover overflow-hidden mb-8 cursor-pointer"
@@ -259,6 +266,6 @@ export function Projects() {
           </motion.div>
         )}
       </AnimatePresence>
-    </section>
+    </motion.section>
   )
 }

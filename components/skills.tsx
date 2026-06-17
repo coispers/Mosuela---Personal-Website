@@ -40,17 +40,29 @@ const staggerContainer = {
 
 const staggerItem = {
   hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
 }
+
+const cardVariants = (index: number) => ({
+  hidden: { opacity: 0, x: index % 2 === 0 ? -30 : 30 },
+  show: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
+})
 
 export function Skills() {
   return (
-    <section id="skills" className="section-wrap gradient-bg">
+    <motion.section
+      id="skills"
+      className="section-wrap gradient-bg"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="container mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5 }}
           className="flex flex-col gap-3 mb-12"
         >
@@ -67,10 +79,10 @@ export function Skills() {
           variants={staggerContainer}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-60px" }}
         >
-          {skillCategories.map((category) => (
-            <motion.div key={category.title} variants={staggerItem} className="relative group">
+          {skillCategories.map((category, idx) => (
+            <motion.div key={category.title} variants={cardVariants(idx)} className="relative group">
               <Card className="glass-card card-hover p-6 relative overflow-hidden">
                 <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-primary to-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-400 origin-left" />
                 <h3 className="text-xl font-semibold mb-4 text-foreground">{category.title}</h3>
@@ -86,6 +98,6 @@ export function Skills() {
           ))}
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   )
 }

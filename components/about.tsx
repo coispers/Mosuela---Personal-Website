@@ -7,18 +7,25 @@ import { motion } from "framer-motion"
 
 const staggerItem = {
   hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
 }
 
 export function About() {
   return (
-    <section id="about" className="section-wrap">
+    <motion.section
+      id="about"
+      className="section-wrap"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="container mx-auto max-w-6xl">
         <motion.div
           className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] items-start"
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-60px" }}
           variants={{ hidden: {}, show: { transition: { staggerChildren: 0.15 } } }}
         >
           <motion.div variants={staggerItem} className="space-y-6">
@@ -33,18 +40,21 @@ export function About() {
               clear structure and fast feedback.
             </p>
             <div className="grid gap-4 sm:grid-cols-3">
-              <div className="stat">
-                <span className="text-sm text-muted-foreground">Strength</span>
-                <span className="text-base font-semibold text-foreground">Systems thinking</span>
-              </div>
-              <div className="stat">
-                <span className="text-sm text-muted-foreground">Approach</span>
-                <span className="text-base font-semibold text-foreground">Practical and iterative</span>
-              </div>
-              <div className="stat">
-                <span className="text-sm text-muted-foreground">Mindset</span>
-                <span className="text-base font-semibold text-foreground">Continuous learning</span>
-              </div>
+              {["Systems thinking", "Practical and iterative", "Continuous learning"].map((label, i) => (
+                <motion.div
+                  key={label}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.5 + i * 0.1 }}
+                  className="stat"
+                >
+                  <span className="text-sm text-muted-foreground">
+                    {["Strength", "Approach", "Mindset"][i]}
+                  </span>
+                  <span className="text-base font-semibold text-foreground">{label}</span>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
 
@@ -133,6 +143,6 @@ export function About() {
           </motion.div>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   )
 }

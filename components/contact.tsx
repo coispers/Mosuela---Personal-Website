@@ -10,9 +10,14 @@ import { Textarea } from "@/components/ui/textarea"
 import { Mail, MapPin, Phone, ArrowUpRight, Send, CheckCircle, AlertCircle } from "lucide-react"
 import { motion } from "framer-motion"
 
-const staggerItem = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+const staggerItemLeft = {
+  hidden: { opacity: 0, x: -30 },
+  show: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
+}
+
+const staggerItemRight = {
+  hidden: { opacity: 0, x: 30 },
+  show: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
 }
 
 export function Contact() {
@@ -59,12 +64,19 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="section-wrap gradient-bg min-h-screen flex flex-col">
+    <motion.section
+      id="contact"
+      className="section-wrap gradient-bg min-h-screen flex flex-col"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="container mx-auto max-w-6xl flex flex-col flex-1">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5 }}
           className="flex flex-col gap-3 mb-12"
         >
@@ -79,10 +91,10 @@ export function Contact() {
           className="grid md:grid-cols-[1fr_1.1fr] gap-8 flex-1"
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-60px" }}
           variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1 } } }}
         >
-          <motion.div variants={staggerItem} className="space-y-6">
+          <motion.div variants={staggerItemLeft} className="space-y-6">
             <div>
               <h3 className="text-2xl font-semibold mb-4 text-foreground">Direct lines</h3>
               <p className="text-lg text-muted-foreground leading-relaxed">
@@ -155,7 +167,7 @@ export function Contact() {
             </div>
           </motion.div>
 
-          <motion.div variants={staggerItem}>
+          <motion.div variants={staggerItemRight}>
             <Card className="glass-card card-hover p-6 flex flex-col relative overflow-hidden">
               <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-primary to-accent" />
               <form onSubmit={handleSubmit} className="space-y-4 flex flex-col flex-1">
@@ -261,6 +273,6 @@ export function Contact() {
           <p className="text-muted-foreground">&copy; {new Date().getFullYear()} Francois Louise C. Mosuela</p>
         </motion.footer>
       </div>
-    </section>
+    </motion.section>
   )
 }

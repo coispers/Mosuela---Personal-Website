@@ -26,7 +26,7 @@ const education = [
 
 const staggerItem = {
   hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
 }
 
 function TimelineColumn({
@@ -40,10 +40,10 @@ function TimelineColumn({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, x: index === 0 ? -40 : 40 }}
+      whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, delay: index * 0.15 }}
+      transition={{ duration: 0.6, delay: index * 0.15, ease: [0.25, 0.1, 0.25, 1] }}
     >
       <h3 className="text-xl font-semibold text-foreground mb-8">{title}</h3>
       <div className="space-y-8">
@@ -78,21 +78,34 @@ function TimelineColumn({
 
 export function Timeline() {
   return (
-    <section id="timeline" className="section-wrap">
+    <motion.section
+      id="timeline"
+      className="section-wrap"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="container mx-auto max-w-6xl">
-        <div className="flex flex-col gap-3 mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col gap-3 mb-12"
+        >
           <p className="section-kicker">Background</p>
           <h2 className="section-title">Experience & Education</h2>
           <p className="text-muted-foreground max-w-2xl">
             My professional journey and academic foundation.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 md:gap-16">
           <TimelineColumn title="Experience" items={experience} index={0} />
           <TimelineColumn title="Education" items={education} index={1} />
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }

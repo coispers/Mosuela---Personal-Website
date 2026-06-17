@@ -18,7 +18,7 @@ const staggerContainer = {
 
 const staggerItem = {
   hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
 }
 
 export function Hero() {
@@ -44,12 +44,12 @@ export function Hero() {
               </h1>
               <div className="flex items-center gap-2 text-lg md:text-xl text-muted-foreground">
                 <span>I am a</span>
-                <span className="relative inline-block min-w-[160px]">
-                  <span className="text-transparent bg-gradient-to-r from-primary via-accent to-accent bg-clip-text">
+                <span className="inline-flex items-center">
+                  <span className="bg-gradient-to-r from-primary via-accent to-accent bg-clip-text text-transparent">
                     {text}
                   </span>
                   <span
-                    className={`absolute -right-1 top-0.5 h-[1.1em] w-[2px] bg-accent ${
+                    className={`h-[1.1em] w-[2px] bg-accent ml-0.5 ${
                       isDeleting ? "" : "animate-pulse"
                     }`}
                   />
