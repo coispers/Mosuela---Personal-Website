@@ -5,6 +5,7 @@ import { useActiveSection } from "@/hooks/use-active-section"
 import { Button } from "@/components/ui/button"
 import { Menu, X, ArrowUpRight } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 const navLinks = [
   { href: "#about", label: "About" },
@@ -29,20 +30,23 @@ export function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/85 backdrop-blur-xl shadow-lg" : "bg-transparent"
+      className={`fixed top-4 left-4 right-4 z-50 transition-all duration-300 max-w-6xl mx-auto rounded-2xl ${
+        isScrolled
+          ? "bg-background/80 backdrop-blur-xl shadow-sm border border-border/50"
+          : "bg-background/50 backdrop-blur-sm border border-transparent"
       }`}
+      style={{ left: "1rem", right: "1rem", maxWidth: "calc(72rem - 2rem)", marginLeft: "auto", marginRight: "auto" }}
     >
-      <div className="container mx-auto px-4 py-4">
+      <div className="px-4 py-3">
         <div className="flex items-center justify-between">
           <a
             href="#"
-            className="text-lg font-semibold tracking-wide text-foreground font-display"
+            className="text-lg font-semibold tracking-tight text-foreground"
           >
-            FM.
+            FM<span className="text-primary">.</span>
           </a>
 
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => {
               const isActive = activeId === link.href.slice(1)
               return (
@@ -50,7 +54,7 @@ export function Navigation() {
                   key={link.href}
                   href={link.href}
                   className={`relative text-sm transition-colors ${
-                    isActive ? "text-primary" : "text-foreground hover:text-primary"
+                    isActive ? "text-primary font-medium" : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {link.label}
@@ -63,22 +67,26 @@ export function Navigation() {
                 </a>
               )
             })}
-            <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90" asChild>
+            <ThemeToggle />
+            <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-xs" asChild>
               <a href="/mosuela-resume.pdf" target="_blank" rel="noopener noreferrer">
                 Resume
-                <ArrowUpRight className="ml-2 h-4 w-4" />
+                <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
               </a>
             </Button>
           </div>
 
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X /> : <Menu />}
-          </Button>
+          <div className="flex items-center gap-2 md:hidden">
+            <ThemeToggle />
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Menu"
+            >
+              {isMobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            </Button>
+          </div>
         </div>
 
         <AnimatePresence>
@@ -87,14 +95,14 @@ export function Navigation() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="md:hidden mt-4 pb-4 flex flex-col gap-4 overflow-hidden"
+              transition={{ duration: 0.25 }}
+              className="md:hidden mt-3 pb-2 flex flex-col gap-3 overflow-hidden"
             >
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-foreground hover:text-primary transition-colors"
+                  className="text-foreground hover:text-primary transition-colors text-sm"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.label}
@@ -104,10 +112,10 @@ export function Navigation() {
                 href="/mosuela-resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-primary"
+                className="inline-flex items-center gap-2 text-sm font-medium text-primary"
               >
                 Resume
-                <ArrowUpRight className="h-4 w-4" />
+                <ArrowUpRight className="h-3.5 w-3.5" />
               </a>
             </motion.div>
           )}

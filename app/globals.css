@@ -4,61 +4,68 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #0a0a0f;
-  --foreground: #e4e4e7;
-  --card: #12121a;
-  --card-foreground: #e4e4e7;
-  --popover: #12121a;
-  --popover-foreground: #e4e4e7;
-  --primary: #6d28d9;
+  --background: #fafafa;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: #2563eb;
   --primary-foreground: #fafafa;
-  --secondary: #1a1a2e;
-  --secondary-foreground: #e4e4e7;
-  --muted: #16162a;
-  --muted-foreground: #71717a;
-  --accent: #06b6d4;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #1e293b;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #2563eb;
   --accent-foreground: #fafafa;
-  --accent-secondary: #2ee6a6;
   --destructive: #ef4444;
   --destructive-foreground: #fafafa;
-  --border: #1e1e32;
-  --input: #1e1e32;
-  --ring: #6d28d9;
-  --link: #a78bfa;
-  --link-hover: #c4b5fd;
-  --chart-1: #6d28d9;
-  --chart-2: #06b6d4;
-  --chart-3: #f59e0b;
-  --chart-4: #22d3ee;
-  --chart-5: #a78bfa;
-  --radius: 0.9rem;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #2563eb;
+  --link: #2563eb;
+  --link-hover: #1d4ed8;
+  --chart-1: #2563eb;
+  --chart-2: #3b82f6;
+  --chart-3: #60a5fa;
+  --chart-4: #93c5fd;
+  --chart-5: #bfdbfe;
+  --radius: 0.5rem;
+  --radius-card: 0.75rem;
 }
 
 .dark {
-  --background: #08080f;
-  --foreground: #eef2f9;
-  --card: #10101e;
-  --card-foreground: #eef2f9;
-  --popover: #10101e;
-  --popover-foreground: #eef2f9;
-  --primary: #7c3aed;
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+  --card: #1e293b;
+  --card-foreground: #f1f5f9;
+  --popover: #1e293b;
+  --popover-foreground: #f1f5f9;
+  --primary: #3b82f6;
   --primary-foreground: #fafafa;
-  --secondary: #1a1a2e;
-  --secondary-foreground: #eef2f9;
-  --muted: #121226;
-  --muted-foreground: #9aa6bf;
-  --accent: #22d3ee;
+  --secondary: #1e293b;
+  --secondary-foreground: #f1f5f9;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: #3b82f6;
   --accent-foreground: #fafafa;
-  --border: #1e1e32;
-  --input: #1e1e32;
-  --ring: #7c3aed;
-  --link: #b2a3ff;
-  --link-hover: #d2cbff;
+  --destructive: #ef4444;
+  --destructive-foreground: #fafafa;
+  --border: #334155;
+  --input: #334155;
+  --ring: #3b82f6;
+  --link: #60a5fa;
+  --link-hover: #93c5fd;
+  --chart-1: #3b82f6;
+  --chart-2: #60a5fa;
+  --chart-3: #93c5fd;
+  --chart-4: #bfdbfe;
+  --chart-5: #dbeafe;
 }
 
 @theme inline {
-  --font-sans: var(--font-sans);
-  --font-display: var(--font-display);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -83,10 +90,10 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: var(--radius-card);
+  --radius-xl: calc(var(--radius-card) + 4px);
 }
 
 @layer base {
@@ -95,190 +102,70 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family:
-      var(--font-sans),
-      system-ui,
-      -apple-system,
-      sans-serif;
-  }
-
-  @media (pointer: fine) {
-    body {
-      cursor: none;
-    }
-    a,
-    button,
-    input,
-    textarea,
-    [role="button"],
-    [data-cursor-hover] {
-      cursor: none;
-    }
+    font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
   }
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(circle at 15% 20%, rgba(109, 40, 217, 0.2), transparent 45%),
-    radial-gradient(circle at 85% 30%, rgba(6, 182, 212, 0.15), transparent 40%),
-    radial-gradient(circle at 40% 80%, rgba(46, 230, 166, 0.08), transparent 50%);
-  pointer-events: none;
-  z-index: -1;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
-.page-bg {
-  background: linear-gradient(160deg, rgba(10, 10, 15, 0.95), rgba(10, 10, 15, 0.7));
-}
-
-.gradient-text {
-  background: linear-gradient(135deg, #a78bfa, #6d28d9 40%, #06b6d4);
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-.gradient-text-alt {
-  background: linear-gradient(135deg, #06b6d4, #22d3ee);
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-.gradient-border {
-  position: relative;
-}
-
-.gradient-border::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, #6d28d9, #06b6d4);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 .section-wrap {
-  @apply px-4 py-20;
+  @apply px-4 py-20 md:py-28;
 }
 
 .section-title {
-  font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
-  @apply text-4xl md:text-5xl font-semibold tracking-tight;
-}
-
-.section-kicker {
-  @apply uppercase tracking-[0.3em] text-xs text-muted-foreground font-semibold;
-}
-
-.glass-card {
-  @apply border border-border/60 bg-card/70 backdrop-blur-lg shadow-lg;
+  @apply text-3xl md:text-4xl font-semibold tracking-tight text-balance;
 }
 
 .chip {
-  @apply inline-flex items-center rounded-full border border-border/60 bg-muted/50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground;
-}
-
-.stat {
-  @apply flex flex-col gap-1 rounded-2xl border border-border/60 bg-card/70 px-4 py-3;
+  @apply inline-flex items-center rounded-full border bg-muted/50 px-3 py-1 text-xs font-medium text-muted-foreground;
 }
 
 .card-hover {
-  @apply transition-all duration-300 hover:-translate-y-1 hover:border-primary/60 hover:shadow-[0_20px_60px_-40px_rgba(109,40,217,0.7)];
+  @apply transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md;
 }
 
 .subtle-grid {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
-.gradient-bg {
-  background: linear-gradient(135deg, rgba(16, 16, 30, 0.92), rgba(10, 10, 15, 0.96));
+.dark .subtle-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
 
-/* Smooth scrolling for in-page anchors */
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: var(--nav-offset, 5rem);
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-@keyframes glow-pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 20px rgba(109, 40, 217, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(6, 182, 212, 0.4);
-  }
-}
-
-@keyframes ring-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.float-slow {
-  animation: float 8s ease-in-out infinite;
-}
-
-.glow-pulse {
-  animation: glow-pulse 3s ease-in-out infinite;
-}
-
-/* Thin purple scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);
+  background: var(--muted-foreground);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--ring);
-}
-
-/* Respect reduced motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  .float-slow,
-  .glow-pulse,
-  .animate-ping {
-    animation: none;
-  }
-}
-
-:root {
-  --nav-offset: 5rem;
-}
-section[id] {
-  scroll-margin-top: var(--nav-offset);
+  background: var(--primary);
 }

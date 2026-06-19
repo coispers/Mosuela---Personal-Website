@@ -24,11 +24,6 @@ const education = [
   },
 ]
 
-const staggerItem = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
-}
-
 function TimelineColumn({
   title,
   items,
@@ -40,29 +35,28 @@ function TimelineColumn({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, x: index === 0 ? -40 : 40 }}
-      whileInView={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, delay: index * 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+      transition={{ duration: 0.5, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
     >
-      <h3 className="text-xl font-semibold text-foreground mb-8">{title}</h3>
-      <div className="space-y-8">
-        {items.map((item, i) => (
+      <h3 className="text-lg font-semibold text-foreground mb-6">{title}</h3>
+      <div className="space-y-6">
+        {items.map((item) => (
           <motion.div
             key={item.title}
-            variants={staggerItem}
-            initial="hidden"
-            whileInView="show"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.15 }}
-            className="relative pl-8 border-l border-primary/30"
+            transition={{ duration: 0.4 }}
+            className="relative pl-6 border-l border-border"
           >
-            <div className="absolute left-0 top-1 -translate-x-1/2 w-3 h-3 rounded-full bg-primary shadow-[0_0_10px_rgba(109,40,217,0.5)]" />
-            <span className="text-xs uppercase tracking-[0.2em] text-accent font-semibold">{item.period}</span>
-            <h4 className="text-lg font-semibold text-foreground mt-1">{item.title}</h4>
-            <p className="text-sm text-muted-foreground/80">{item.subtitle}</p>
-            <p className="text-muted-foreground text-sm leading-relaxed mt-2">{item.description}</p>
-            <div className="flex flex-wrap gap-2 mt-3">
+            <div className="absolute left-0 top-1.5 -translate-x-1/2 w-2 h-2 rounded-full bg-primary/60" />
+            <span className="text-xs text-primary font-mono">{item.period}</span>
+            <h4 className="text-base font-semibold text-foreground mt-0.5">{item.title}</h4>
+            <p className="text-sm text-muted-foreground">{item.subtitle}</p>
+            <p className="text-sm text-muted-foreground leading-relaxed mt-2">{item.description}</p>
+            <div className="flex flex-wrap gap-1.5 mt-3">
               {item.tags.map((tag) => (
                 <span key={tag} className="chip text-[10px] px-2 py-0.5">
                   {tag}
@@ -84,7 +78,7 @@ export function Timeline() {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.5 }}
     >
       <div className="container mx-auto max-w-6xl">
         <motion.div
@@ -94,14 +88,15 @@ export function Timeline() {
           transition={{ duration: 0.5 }}
           className="flex flex-col gap-3 mb-12"
         >
-          <p className="section-kicker">Background</p>
-          <h2 className="section-title">Experience & Education</h2>
-          <p className="text-muted-foreground max-w-2xl">
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-balance">
+            Experience & Education
+          </h2>
+          <p className="text-muted-foreground max-w-xl text-balance leading-relaxed">
             My professional journey and academic foundation.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16">
           <TimelineColumn title="Experience" items={experience} index={0} />
           <TimelineColumn title="Education" items={education} index={1} />
         </div>
