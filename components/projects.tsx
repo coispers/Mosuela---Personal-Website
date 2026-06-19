@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, Github, X } from "lucide-react"
+import { Github, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { CardStack, type CardStackItem } from "@/components/ruixen/card-stack"
 import { HighlightedText } from "@/components/ui/highlighted-text"
@@ -125,12 +125,7 @@ function ProjectModal({
                 View Code
               </a>
             </Button>
-            <Button size="sm" variant="outline" asChild>
-              <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="w-3.5 h-3.5 mr-1.5" />
-                Live Demo
-              </a>
-            </Button>
+
           </div>
         </div>
       </motion.div>

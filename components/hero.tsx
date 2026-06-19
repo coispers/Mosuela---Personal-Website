@@ -25,7 +25,7 @@ const staggerItem = {
 
 export function Hero() {
   return (
-    <section className="min-h-[100dvh] flex items-center px-4 relative overflow-hidden">
+    <section id="hero" className="min-h-[100dvh] flex items-center px-4 relative overflow-hidden">
       <div className="container mx-auto max-w-6xl w-full">
         <motion.div
           className="grid gap-12 lg:grid-cols-[1.2fr_0.9fr] items-center"
@@ -35,9 +35,18 @@ export function Hero() {
         >
           <motion.div variants={staggerItem} className="space-y-8 pt-20 lg:pt-0">
             <div className="space-y-4">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-foreground tracking-tight text-balance leading-none">
-                Francois Louise C. Mosuela
-              </h1>
+              <div className="space-y-2">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-500 ">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                  </span>
+                  Open for work
+                </span>
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-foreground tracking-tight text-balance leading-none">
+                  Francois Louise C. Mosuela
+                </h1>
+              </div>
               <div className="flex items-center gap-2 text-lg md:text-xl text-muted-foreground">
                 <span>I am a</span>
                 <span className="inline-flex items-center text-primary min-w-[180px]">
@@ -92,7 +101,6 @@ export function Hero() {
               >
                 <Mail className="w-5 h-5" />
               </a>
-              <span className="text-sm text-muted-foreground ml-2">Open to entry-level roles</span>
             </div>
           </motion.div>
 

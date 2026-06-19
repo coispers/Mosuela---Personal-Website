@@ -1,33 +1,76 @@
 "use client"
 
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { useActiveSection } from "@/hooks/use-active-section"
 import { Button } from "@/components/ui/button"
 import { Menu, X, ArrowUpRight } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, animate } from "framer-motion"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#timeline", label: "Timeline" },
-  { href: "#projects", label: "Projects" },
-  { href: "#contact", label: "Contact" },
+  { id: "about", label: "About" },
+  { id: "skills", label: "Skills" },
+  { id: "timeline", label: "Timeline" },
+  { id: "projects", label: "Projects" },
+  { id: "contact", label: "Contact" },
 ]
 
-const sectionIds = navLinks.map((l) => l.href.slice(1))
+const sectionIds = navLinks.map((l) => l.id)
+
+function easeOutQuart(t: number): number {
+  return 1 - Math.pow(1 - t, 4)
+}
+
+function smoothScrollTo(elementId: string) {
+  const el = document.getElementById(elementId)
+  if (!el) return
+
+  const offset = 80
+  const targetPos = el.getBoundingClientRect().top + window.scrollY - offset
+  const startPos = window.scrollY
+  const distance = targetPos - startPos
+  const duration = Math.min(Math.abs(distance) * 0.4 + 200, 900)
+
+  let startTime: number | null = null
+
+  function step(timestamp: number) {
+    if (!startTime) startTime = timestamp
+    const elapsed = timestamp - startTime
+    const progress = Math.min(elapsed / duration, 1)
+    const eased = easeOutQuart(progress)
+
+    window.scrollTo(0, startPos + distance * eased)
+
+    if (progress < 1) {
+      requestAnimationFrame(step)
+    }
+  }
+
+  requestAnimationFrame(step)
+}
 
 export function Navigation() {
   const activeId = useActiveSection(sectionIds)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
+  const islandRef = useRef<HTMLDivElement>(null)
 
   const isExpanded = isHovered || isMobileMenuOpen
-  const activeLabel = navLinks.find((l) => l.href.slice(1) === activeId)?.label
+  const activeLabel = navLinks.find((l) => l.id === activeId)?.label
+
+  function handleNavClick(id: string) {
+    if (islandRef.current) {
+      animate(islandRef.current, { scale: [1, 1.02, 1] }, { duration: 0.35, ease: "easeInOut" })
+    }
+
+    setIsMobileMenuOpen(false)
+    smoothScrollTo(id)
+  }
 
   return (
     <nav className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
       <motion.div
+        ref={islandRef}
         layout
         transition={{ type: "spring", stiffness: 400, damping: 30 }}
         className={`flex items-center bg-black/90 backdrop-blur-xl border border-white/10 shadow-lg ${
@@ -50,17 +93,20 @@ export function Navigation() {
           </div>
         ) : (
           <div className="flex items-center justify-between w-full gap-4">
-            <a href="#" className="text-sm font-semibold text-white/90 shrink-0">
+            <button
+              onClick={() => handleNavClick("hero")}
+              className="text-sm font-semibold text-white/90 shrink-0 hover:text-white/70 transition-colors"
+            >
               FM<span className="text-blue-400">.</span>
-            </a>
+            </button>
 
             <div className="hidden md:flex items-center gap-5">
               {navLinks.map((link) => {
-                const isActive = activeId === link.href.slice(1)
+                const isActive = activeId === link.id
                 return (
-                  <a
-                    key={link.href}
-                    href={link.href}
+                  <button
+                    key={link.id}
+                    onClick={() => handleNavClick(link.id)}
                     className={`relative text-xs transition-colors ${
                       isActive
                         ? "text-white font-medium"
@@ -74,7 +120,7 @@ export function Navigation() {
                         className="absolute -bottom-1 left-0 right-0 h-px bg-white/70"
                       />
                     )}
-                  </a>
+                  </button>
                 )
               })}
             </div>
@@ -119,14 +165,13 @@ export function Navigation() {
             className="absolute top-full mt-2 left-4 right-4 md:hidden rounded-2xl bg-black/90 backdrop-blur-xl border border-white/10 p-4 flex flex-col gap-3 shadow-lg"
           >
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-white/80 hover:text-white transition-colors text-sm"
-                onClick={() => setIsMobileMenuOpen(false)}
+              <button
+                key={link.id}
+                onClick={() => handleNavClick(link.id)}
+                className="text-left text-white/80 hover:text-white transition-colors text-sm"
               >
                 {link.label}
-              </a>
+              </button>
             ))}
             <a
               href="/mosuela-resume.pdf"
