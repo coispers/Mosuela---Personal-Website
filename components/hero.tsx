@@ -37,7 +37,11 @@ export function Hero() {
           <motion.div variants={staggerItem} className="space-y-8 pt-20 lg:pt-0">
             <div className="space-y-4">
               <div className="space-y-2">
-                <span className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium animate-breathing">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-500 animate-breathing">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                  </span>
                   Open for work
                 </span>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-foreground tracking-tight text-balance leading-none">
