@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card"
 import { GraduationCap, Code, Lightbulb } from "lucide-react"
 import Image from "next/image"
 import { motion } from "framer-motion"
+import { HighlightedText } from "@/components/ui/highlighted-text"
 
 const staggerItem = {
   hidden: { opacity: 0, y: 24 },
@@ -30,7 +31,9 @@ export function About() {
         >
           <motion.div variants={staggerItem} className="space-y-6">
             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-balance">
-              Focused on building dependable, human-centered software.
+              Focused on building{" "}
+              <HighlightedText inView from="bottom" className="font-semibold">dependable, human-centered</HighlightedText>{" "}
+              software.
             </h2>
             <p className="text-base text-muted-foreground leading-relaxed">
               I am Francois Louise C. Mosuela, a Computer Science student at Batangas State University. I care about

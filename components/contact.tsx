@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Mail, MapPin, ArrowUpRight, Send, CheckCircle, AlertCircle } from "lucide-react"
 import { motion } from "framer-motion"
+import { HighlightedText } from "@/components/ui/highlighted-text"
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -71,7 +72,8 @@ export function Contact() {
           className="flex flex-col gap-3 mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-balance">
-            Let us build something that lasts.
+            Let us build{" "}
+            <HighlightedText inView from="bottom" className="font-semibold">something that lasts</HighlightedText>.
           </h2>
           <p className="text-muted-foreground max-w-xl text-balance leading-relaxed">
             I am open to internships, junior roles, and collaborative projects. The fastest way to reach me is email.

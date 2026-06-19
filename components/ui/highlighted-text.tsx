@@ -1,0 +1,74 @@
+"use client"
+
+import { motion } from "framer-motion"
+import { cn } from "@/lib/utils"
+
+type From = "left" | "right" | "top" | "bottom"
+
+interface HighlightedTextProps {
+  children: React.ReactNode
+  className?: string
+  from?: From
+  delay?: number
+  inView?: boolean
+  once?: boolean
+}
+
+const fromVariants = {
+  left: {
+    hidden: { x: "-100%" },
+    visible: { x: "0%" },
+  },
+  right: {
+    hidden: { x: "100%" },
+    visible: { x: "0%" },
+  },
+  top: {
+    hidden: { y: "-100%" },
+    visible: { y: "0%" },
+  },
+  bottom: {
+    hidden: { y: "100%" },
+    visible: { y: "0%" },
+  },
+}
+
+export function HighlightedText({
+  children,
+  className,
+  from = "bottom",
+  delay = 0,
+  inView = false,
+  once = true,
+}: HighlightedTextProps) {
+  const variants = fromVariants[from]
+
+  return (
+    <motion.span
+      className={cn(
+        "relative inline-flex overflow-hidden align-baseline rounded-sm",
+        className,
+      )}
+      initial="hidden"
+      whileInView={inView ? "visible" : undefined}
+      animate={inView ? undefined : "visible"}
+      viewport={{ once }}
+    >
+      <motion.span
+        className="absolute inset-0 -left-[0.05em] -right-[0.05em] bg-primary/20 z-0 rounded-sm"
+        variants={variants}
+        transition={{
+          type: "spring",
+          damping: 30,
+          stiffness: 300,
+          delay,
+        }}
+      />
+      <span className="relative z-10 pl-[0.05em] pr-[0.05em] text-foreground">
+        {children}
+      </span>
+    </motion.span>
+  )
+}
+
+export default HighlightedText

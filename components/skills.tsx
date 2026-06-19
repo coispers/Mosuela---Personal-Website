@@ -2,6 +2,7 @@
 
 import { Card } from "@/components/ui/card"
 import { motion } from "framer-motion"
+import { HighlightedText } from "@/components/ui/highlighted-text"
 
 const skillCategories = [
   {
@@ -55,7 +56,7 @@ export function Skills() {
           className="flex flex-col gap-3 mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-balance">
-            Tools I use to build and ship.
+            <HighlightedText inView from="bottom" className="font-semibold">Tools</HighlightedText> I use to build and ship.
           </h2>
           <p className="text-muted-foreground max-w-xl text-balance leading-relaxed">
             A balanced toolkit across backend systems, product UI, and deployment. I prefer picking the right tool for
@@ -85,10 +86,18 @@ export function Skills() {
               <Card className="card-hover p-5 border-border/50 h-full">
                 <h3 className="text-base font-semibold mb-3 text-foreground">{category.title}</h3>
                 <div className="flex flex-wrap gap-1.5">
-                  {category.skills.map((skill) => (
-                    <span key={skill} className="chip text-xs">
+                  {category.skills.map((skill, i) => (
+                    <motion.span
+                      key={skill}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: i * 0.05 }}
+                      whileHover={{ scale: 1.05 }}
+                      className="chip text-xs"
+                    >
                       {skill}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
               </Card>

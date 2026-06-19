@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { HighlightedText } from "@/components/ui/highlighted-text"
 
 const experience = [
   {
@@ -89,7 +90,7 @@ export function Timeline() {
           className="flex flex-col gap-3 mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-balance">
-            Experience & Education
+            <HighlightedText inView from="bottom" className="font-semibold">Experience</HighlightedText> & Education
           </h2>
           <p className="text-muted-foreground max-w-xl text-balance leading-relaxed">
             My professional journey and academic foundation.

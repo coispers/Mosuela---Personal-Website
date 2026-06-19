@@ -4,7 +4,9 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react"
 import { motion } from "framer-motion"
-import { useTypewriter } from "@/hooks/use-typewriter"
+import AnimatedTextCycle from "@/components/ui/animated-text-cycle"
+import { HighlightedText } from "@/components/ui/highlighted-text"
+import { MagneticButton } from "@/components/magnetic-button"
 
 const roles = ["Full-Stack Developer", "Backend Engineer", "CS Student"]
 
@@ -22,8 +24,6 @@ const staggerItem = {
 }
 
 export function Hero() {
-  const { text, isDeleting } = useTypewriter({ words: roles, typeSpeed: 70, deleteSpeed: 45, pauseDuration: 2200 })
-
   return (
     <section className="min-h-[100dvh] flex items-center px-4 relative overflow-hidden">
       <div className="container mx-auto max-w-6xl w-full">
@@ -40,31 +40,30 @@ export function Hero() {
               </h1>
               <div className="flex items-center gap-2 text-lg md:text-xl text-muted-foreground">
                 <span>I am a</span>
-                <span className="inline-flex items-center text-primary">
-                  {text}
-                  <span
-                    className={`h-[1.1em] w-[2px] bg-primary ml-0.5 ${
-                      isDeleting ? "" : "animate-pulse"
-                    }`}
-                  />
+                <span className="inline-flex items-center text-primary min-w-[180px]">
+                  <AnimatedTextCycle words={roles} interval={3000} className="text-primary" />
                 </span>
               </div>
               <p className="text-base md:text-lg text-muted-foreground max-w-xl text-balance leading-relaxed">
-                CS student focused on backend systems, thoughtful UI, and real-world problem solving.
+                CS student focused on <HighlightedText inView from="bottom" className="font-medium">backend systems,</HighlightedText> thoughtful UI, and real-world problem solving.
               </p>
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
-              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-xs" asChild>
-                <a href="#projects">
-                  View Projects
-                </a>
-              </Button>
-              <Button size="lg" variant="outline" asChild>
-                <a href="/mosuela-resume.pdf" target="_blank" rel="noopener noreferrer">
-                  Download Resume
-                </a>
-              </Button>
+              <MagneticButton>
+                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-xs" asChild>
+                  <a href="#projects">
+                    View Projects
+                  </a>
+                </Button>
+              </MagneticButton>
+              <MagneticButton strength={20}>
+                <Button size="lg" variant="outline" asChild>
+                  <a href="/mosuela-resume.pdf" target="_blank" rel="noopener noreferrer">
+                    Download Resume
+                  </a>
+                </Button>
+              </MagneticButton>
             </div>
 
             <div className="flex items-center gap-4">
